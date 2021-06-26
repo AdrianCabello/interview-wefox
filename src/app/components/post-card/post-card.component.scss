@@ -8,19 +8,34 @@
     text-align: left;
     margin: 10px 0;
     width: calc(100% - 20px);
-    .post-info {
+    .post-info-minature {
         display: flex;
-        .minature {
-            width: 220px;
-            margin-right: 10px;
-            border-radius: 5px;
-        }
-        .title{
-            color: $principal
-        }
-        .content {
-            opacity: 0.8;
-            font-size: 16px;
-        }
     }
+    .post-info-complete {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin: 20px 0;
+    }
+    .img-minature {
+        width: 220px;
+        margin-right: 10px;
+        border-radius: 5px;
+    }
+    .img-complete {
+        width: 540px;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+    .title {
+        color: $principal;
+    }
+    .content {
+        opacity: 0.8;
+        font-size: 16px;
+    }
+}
+
+.pointer {
+    cursor: pointer;
 }

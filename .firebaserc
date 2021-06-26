@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "interview-wefox"
+  },
+  "targets": {
+    "interview-wefox": {
+      "hosting": {
+        "interview-wefox": [
+          "interview-wefox"
+        ]
+      }
+    }
+  }
+}

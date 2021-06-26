@@ -1,0 +1,44 @@
+@import "../../../variables.scss";
+
+mat-card {
+    margin-top: 10px;
+}
+
+.editor-container {
+    text-align: left;
+    h1 {
+        color: $principal;
+    }
+
+    .post-form {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .upload-container {
+        text-align: left;
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0;
+            mat-progress-bar {
+                width: 50%;
+                margin-top: 5px;
+            }
+            .upload {
+                width: 120px;
+            }
+            .porcentaje {
+                font-weight: bold;
+            }
+        }
+        .upload-image {
+            width: 100%;
+        }
+        .file-container {
+            margin-bottom: 10px;
+        }
+    }
+}

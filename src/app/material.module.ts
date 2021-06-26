@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
     imports: [
@@ -17,14 +19,18 @@ import { HttpClientModule } from '@angular/common/http';
         MatAutocompleteModule,
         MatFormFieldModule,
         MatInputModule,
-        HttpClientModule 
+        HttpClientModule,
+        MatCardModule,
+        MatProgressBarModule
     ],
     exports: [
         MatButtonModule,
         MatIconModule,
         MatInputModule,
         MatAutocompleteModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        MatCardModule,
+        MatProgressBarModule
     ],
     providers: [
     ],

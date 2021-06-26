@@ -12,22 +12,32 @@ import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PostContainerComponent } from './components/posts-container/post-container.component';
 import { PostCardComponent } from './components/post-card/post-card.component';
-
+import { APP_ROUTING } from './app.routes';
+import { HeaderComponent } from './header/header.component';
+import { PostComponent } from './components/post/post.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
+    PostComponent,
     PostCardComponent,
     PostMapComponent,
     PostEditorComponent,
     SearchComponent,
     HomeComponent,
-    PostContainerComponent
+    PostContainerComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     MaterialModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    APP_ROUTING,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Post } from 'src/app/models/post';
 import { PostsService } from 'src/app/services/posts.service';
 
@@ -8,18 +9,28 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  posts: Array<Post>
+  post: Post
+  post_id: Number;
 
-  constructor(private _postsService: PostsService) { }
+
+  constructor(
+    private _postsService: PostsService,
+    private route: ActivatedRoute,
+    ) { }
 
   ngOnInit(): void {
-    this.getPosts()
+    this.loadPost()
   }
 
-  getPosts() {
-    this._postsService.getPosts().subscribe(
-      (posts: Array<Post>) => {
-        this.posts = posts;
+  loadPost(){
+    this.post_id = Number(this.route.snapshot.paramMap.get('id'));
+    this.getPost()
+  }
+
+  getPost() {
+    this._postsService.getPost(this.post_id).subscribe(
+      (post: Post) => {
+        this.post = post;
       }
     );
   }

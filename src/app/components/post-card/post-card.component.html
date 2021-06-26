@@ -1,10 +1,11 @@
-<div class="post-container">
-    <div class="post-info">
-        <img *ngIf="post?.image_url" class="minature" [src]="post?.image_url" alt="City">
-      <!--   <img class="minature" [src]="post?.image_url" alt=""> -->
+<mat-card class="post-container" [ngClass]="{'pointer': !complete}">
+    <div [ngClass]="{'post-info-minature':!complete,'post-info-complete':complete }" [routerLink]="['/post', post?.id]">
+        <img *ngIf="!complete" class="img-minature" [src]="post?.image_url" alt="City">
         <div>
             <h1 class="title">{{post?.title}}</h1>
             <h2 class="content">{{post?.content}}</h2>
+            <img *ngIf="complete" class="img-complete" [src]="post?.image_url" alt="">
+            <img *ngIf="complete" class="img-complete" [src]="post?.image_url" alt="">
         </div>
     </div>
-</div>
+</mat-card>

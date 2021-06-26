@@ -1,1 +1,34 @@
-<p>post-editor works!</p>
+<mat-card class="editor-container">
+    <h1>New Post</h1>
+    <form class="post-form" [formGroup]="newPost">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Buenos Aires" formControlName="title">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Description</mat-label>
+
+            <textarea matInput
+                placeholder="Almeria is a Spanish city and municipality, capital of the province of the same name, in the autonomous community of Andalusia."
+                formControlName="content"></textarea>
+        </mat-form-field>
+    </form>
+
+    <div class="upload-container">
+        <form [formGroup]="archivoForm">
+            <div class="file-container">
+                <input class="file-input" type="file" formControlName="archivo" (change)="changeFile($event)">
+            </div>
+
+            <div class="loading-container" *ngIf="loading">
+                <img class="upload" src="./assets/images/upload.svg" alt="upload">
+                <span class="porcentaje"> {{porcentaje}}%</span>
+                <mat-progress-bar mode="determinate" [value]="porcentaje" max="100"></mat-progress-bar>
+            </div>
+            <img *ngIf="URLPublica" class="upload-image" [src]="URLPublica" alt="">
+        </form>
+    </div>
+
+    <button mat-stroked-button color="primary" (click)="createPost()">Create Post</button>
+</mat-card>

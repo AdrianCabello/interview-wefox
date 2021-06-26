@@ -1,0 +1,10 @@
+<div class="post-container">
+    <div class="post-info">
+        <img *ngIf="post?.image_url" class="minature" [src]="post?.image_url" alt="City">
+      <!--   <img class="minature" [src]="post?.image_url" alt=""> -->
+        <div>
+            <h1 class="title">{{post?.title}}</h1>
+            <h2 class="content">{{post?.content}}</h2>
+        </div>
+    </div>
+</div>

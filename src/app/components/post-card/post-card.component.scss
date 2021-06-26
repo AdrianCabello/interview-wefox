@@ -1,0 +1,26 @@
+@import "../../../variables.scss";
+
+.post-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    padding: 10px;
+    text-align: left;
+    margin: 10px 0;
+    width: calc(100% - 20px);
+    .post-info {
+        display: flex;
+        .minature {
+            width: 220px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+        .title{
+            color: $principal
+        }
+        .content {
+            opacity: 0.8;
+            font-size: 16px;
+        }
+    }
+}

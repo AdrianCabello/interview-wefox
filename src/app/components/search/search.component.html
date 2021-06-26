@@ -1,0 +1,12 @@
+<div class='search-container'>
+    <div class="search-new">
+        <button mat-raised-button color="primary">
+           New post
+        </button>
+    </div>
+    <div class="search-input">
+        <mat-icon>search</mat-icon>
+        <input class="search-input" placeholder="Search" type="text" spellcheck="false" (focus)="true" (blur)="false"
+            [formControl]="searchControl">
+    </div>
+</div>

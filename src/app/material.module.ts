@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
     imports: [
@@ -21,7 +23,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
         MatInputModule,
         HttpClientModule,
         MatCardModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatSnackBarModule,
+        MatTooltipModule
     ],
     exports: [
         MatButtonModule,
@@ -30,7 +34,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
         MatAutocompleteModule,
         MatFormFieldModule,
         MatCardModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatSnackBarModule,
+        MatTooltipModule
     ],
     providers: [
     ],

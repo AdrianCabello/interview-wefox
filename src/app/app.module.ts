@@ -28,7 +28,8 @@ import { environment } from 'src/environments/environment';
     SearchComponent,
     HomeComponent,
     PostContainerComponent,
-    HeaderComponent
+    HeaderComponent,
+    
   ],
   imports: [
     BrowserModule,

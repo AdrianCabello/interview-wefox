@@ -1,11 +1,17 @@
 <mat-card class="post-container" [ngClass]="{'pointer': !complete}">
+    <div class="actions">
+        <mat-icon matTooltip="Edit" (click)="edit()">edit</mat-icon>
+        <mat-icon matTooltip="Delete" (click)="delete()">delete</mat-icon>
+    </div>
     <div [ngClass]="{'post-info-minature':!complete,'post-info-complete':complete }" [routerLink]="['/post', post?.id]">
         <img *ngIf="!complete" class="img-minature" [src]="post?.image_url" alt="City">
+        <img *ngIf="complete" class="img-complete" [src]="post?.image_url" alt="">
         <div>
             <h1 class="title">{{post?.title}}</h1>
             <h2 class="content">{{post?.content}}</h2>
-            <img *ngIf="complete" class="img-complete" [src]="post?.image_url" alt="">
-            <img *ngIf="complete" class="img-complete" [src]="post?.image_url" alt="">
         </div>
     </div>
+    <!--  <img *ngIf="complete" class="img-complete" [src]="post?.image_url" alt=""> -->
+    <div #map class="map" *ngIf="complete"></div>
+
 </mat-card>

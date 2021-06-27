@@ -9,7 +9,7 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class PostContainerComponent implements OnInit {
   posts: Array<Post>
-
+  
   constructor(private _postsService: PostsService) { }
 
   ngOnInit(): void {

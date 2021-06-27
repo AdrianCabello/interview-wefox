@@ -14,7 +14,8 @@ export const environment = {
     storageBucket: "interview-wefox.appspot.com",
     messagingSenderId: "422604386055",
     appId: "1:422604386055:web:271405aa113aefa0cedfa2"
-  }
+  },
+  mapboxToken: 'pk.eyJ1IjoiYWRyaWljYWJlbGxvIiwiYSI6ImNrcWVqbGU2OTBpdHIyb285NW1kOHA1aWsifQ.xcVV3ZOE2CfG5SqFnYZsKg'
 };
 
 /*

@@ -1,5 +1,13 @@
 @import "../../../variables.scss";
-
+.actions {
+    position: absolute;
+    right: 10px;
+    opacity: 0.6;
+    cursor: pointer;
+    mat-icon{
+        margin-left: 5px;
+    }
+}
 .post-container {
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -13,8 +21,6 @@
     }
     .post-info-complete {
         display: flex;
-        justify-content: center;
-        text-align: center;
         margin: 20px 0;
     }
     .img-minature {
@@ -23,7 +29,7 @@
         border-radius: 5px;
     }
     .img-complete {
-        width: 540px;
+        width: 440px;
         border-radius: 5px;
         margin-right: 10px;
     }
@@ -38,4 +44,9 @@
 
 .pointer {
     cursor: pointer;
+}
+
+.map{
+    width: 100%;
+    height: 400px;
 }

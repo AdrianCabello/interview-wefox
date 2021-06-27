@@ -10,7 +10,7 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class PostComponent implements OnInit {
   post: Post
-  post_id: Number;
+  post_id: number;
 
 
   constructor(

@@ -177,7 +177,7 @@ export class PostEditorComponent implements OnInit, AfterViewInit {
 
     if (this.newPost.valid) {
       if (this.isEdit) {
-        this._postsService.updatePost(this.newPost).subscribe(
+        this._postsService.updatePost(this.newPost.value).subscribe(
           (post: Post) => {
             this.router.navigate(['/post', post.id])
             this._snackBar.open('Post Created', 'Done', {

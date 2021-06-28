@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    mat-icon {
+        padding-top: 4px;
+    }
+}
+mat-dialog-content {
+    p {
+        margin-bottom: 0;
+        &.info {
+            margin-bottom: 5px;
+        }
+    }
+}
+
+mat-dialog-actions {
+    justify-content: flex-end !important;
+}

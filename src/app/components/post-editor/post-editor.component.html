@@ -1,3 +1,4 @@
+<app-search [activeList]="true"></app-search>
 <mat-card class="editor-container">
     <h1>{{isEdit? 'Edit Post' : 'New post'}}</h1>
     <div class='editor-sub-container'>
@@ -30,7 +31,7 @@
                     formControlName="content"></textarea>
             </mat-form-field>
             <div #map class="map"></div>
-            <button mat-stroked-button color="primary" type="submit">{{isEdit? 'Update' : 'Create'}}</button>
+            <button mat-raised-button color="primary" type="submit">{{isEdit? 'Update' : 'Create'}}</button>
         </form>
     </div>
 </mat-card>

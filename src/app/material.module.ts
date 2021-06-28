@@ -11,6 +11,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
     imports: [
@@ -25,7 +27,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
         MatCardModule,
         MatProgressBarModule,
         MatSnackBarModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatDialogModule
     ],
     exports: [
         MatButtonModule,
@@ -36,9 +39,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
         MatCardModule,
         MatProgressBarModule,
         MatSnackBarModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatDialogModule
     ],
     providers: [
     ],
+    
 })
 export class MaterialModule { }

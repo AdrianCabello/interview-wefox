@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Post } from 'src/app/models/post';
 import { PostsService } from 'src/app/services/posts.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post',
@@ -15,23 +16,22 @@ export class PostComponent implements OnInit {
 
   constructor(
     private _postsService: PostsService,
-    private route: ActivatedRoute,
-    ) { }
+    private activatedRoute: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
     this.loadPost()
   }
 
-  loadPost(){
-    this.post_id = Number(this.route.snapshot.paramMap.get('id'));
-    this.getPost()
-  }
-
-  getPost() {
-    this._postsService.getPost(this.post_id).subscribe(
-      (post: Post) => {
-        this.post = post;
+  loadPost() {
+    this.activatedRoute.params.pipe(
+      switchMap((p: Params) => {
+        this.post_id = p['id']; //read the username route parameter
+        return this._postsService.getPost(this.post_id)
       }
-    );
+      ))
+      .subscribe((post: Post) => {
+        this.post = post;
+      })
   }
 }

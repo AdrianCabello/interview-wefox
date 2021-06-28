@@ -1,0 +1,13 @@
+<div class="header">
+    <mat-icon>delete</mat-icon>
+    <h1>
+        Delete Post
+    </h1>
+</div>
+<mat-dialog-content>
+    <p>Do you want to delete {{data.title}}?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">Yes</button>
+    <button mat-raised-button [mat-dialog-close]="false">No</button>
+</mat-dialog-actions>

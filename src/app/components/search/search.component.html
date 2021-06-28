@@ -1,12 +1,23 @@
 <div class='search-container'>
     <div class="search-new">
-        <button mat-raised-button color="primary" [routerLink]="['new']"> 
-           New post
+        <button mat-raised-button color="primary" [routerLink]="['/new']">
+            New post
         </button>
     </div>
     <div class="search-input">
         <mat-icon>search</mat-icon>
-        <input class="search-input" placeholder="Search" type="text" spellcheck="false" (focus)="true" (blur)="false"
-            [formControl]="searchControl">
+        <input placeholder="Search" type="text" spellcheck="false" (focus)="true" (blur)="false"
+            [formControl]="searchControl" (click)="search()">
+        <mat-card *ngIf="listSearch" class="search-list" (clickOutside)="close()" [exclude]="'.search-container'"
+            (click)="search()">
+
+            <ng-container *ngFor="let post of posts">
+                <div class="item-container" (click)="navigatePost(post.id)">
+                    <span>{{post.title}}</span>
+                </div>
+            </ng-container>
+
+        </mat-card>
     </div>
+
 </div>

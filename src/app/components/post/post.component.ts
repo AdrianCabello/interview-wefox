@@ -12,7 +12,7 @@ import { switchMap } from 'rxjs/operators';
 export class PostComponent implements OnInit {
   post: Post
   post_id: number;
-
+  loading: Boolean;
 
   constructor(
     private _postsService: PostsService,
@@ -24,14 +24,16 @@ export class PostComponent implements OnInit {
   }
 
   loadPost() {
+    this.loading = true;
     this.activatedRoute.params.pipe(
       switchMap((p: Params) => {
-        this.post_id = p['id']; //read the username route parameter
+        this.post_id = p['id'];
         return this._postsService.getPost(this.post_id)
       }
       ))
       .subscribe((post: Post) => {
         this.post = post;
+        this.loading = false;
       })
   }
 }

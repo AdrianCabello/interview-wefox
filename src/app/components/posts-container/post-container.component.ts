@@ -15,6 +15,8 @@ import { SetActive } from 'src/app/redux/actions/navigation.actions';
 export class PostContainerComponent implements OnInit {
   posts: Array<Post>;
   subPost: Subscription;
+  loading = false;
+  systemError = false;
 
   constructor(
     private _postsService: PostsService,
@@ -22,24 +24,30 @@ export class PostContainerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getPosts();
-    this.loadPost() 
+    this.subscribePosts();
+    this.loadPost()
   }
 
-  loadPost() {
-    this._postsService.getPosts().subscribe(
-      (posts: Array<Post>) => {
-        const action = new LoadPosts(posts);
-        this.store.dispatch(action);
-      }
-    );
-  }
-
-  getPosts() {
+  subscribePosts() {
     this.subPost = this.store.pipe(select('posts')).subscribe(
       (posts: any) => {
         this.posts = posts?.filterList;
       }
-    );   
+    );
+  }
+
+  loadPost() {
+    this.loading = true;
+    this._postsService.getPosts().subscribe(
+      (posts: Array<Post>) => {
+        const action = new LoadPosts(posts);
+        this.store.dispatch(action);
+        this.loading = false;
+      },
+      () => {
+        this.loading = false;
+        this.systemError = true;
+      }
+    );
   }
 }

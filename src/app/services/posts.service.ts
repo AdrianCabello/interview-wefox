@@ -31,7 +31,7 @@ export class PostsService {
     return this._http.delete(`${this.urlPosts}/${idPost}`)
   }
 
-  updatePost(post) {
-    return this._http.put(`${this.urlPosts}/${post.id}`, post)
+  updatePost(post, post_id) {
+    return this._http.put(`${this.urlPosts}/${post_id}`, post)
   }
 }

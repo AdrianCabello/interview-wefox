@@ -35,10 +35,15 @@ export class PostEditorComponent implements OnInit, AfterViewInit {
   url_public = '';
   percentage = 0;
   isEdit = false;
-  loading = false;
 
   map_long: number;
   map_lat: number;
+
+  image_loading = false;
+  form_loading = false;
+  invalid_image = false;
+  invalid_map = false;
+  systemError = false;
 
   constructor(
     private _firebaseStorage: FirebaseStorageService,
@@ -89,7 +94,6 @@ export class PostEditorComponent implements OnInit, AfterViewInit {
     }
   }
 
-
   setPost(post) {
     this.newPost.get('title').setValue(post?.title);
     this.newPost.get('content').setValue(post?.content);
@@ -98,7 +102,6 @@ export class PostEditorComponent implements OnInit, AfterViewInit {
     this.map_long = post?.long;
     this.url_public = post?.image_url;
   }
-
 
   loadMap(post?: Post) {
     if (this.isEdit) {
@@ -114,13 +117,10 @@ export class PostEditorComponent implements OnInit, AfterViewInit {
         .addTo(this.map)
     } else {
       //Default
-      this.map_lat = 40.41678;
-      this.map_long = -3.70379;
-
       this.map = new mapboxgl.Map({
         container: this.divMap.nativeElement,
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: [this.map_long, this.map_lat],
+        center: [-3.70379, 40.41678],
         zoom: this.zoomLevel
       });
     }
@@ -134,12 +134,13 @@ export class PostEditorComponent implements OnInit, AfterViewInit {
     geocoder.on('result', (e) => {
       this.map_long = e.result.geometry.coordinates[0];
       this.map_lat = e.result.geometry.coordinates[1]
+      this.invalid_map = false;
     });
   }
 
   public changeFile(event) {
     this.url_public = null;
-    this.loading = true;
+    this.image_loading = true;
     if (event.target.files.length > 0) {
       for (let i = 0; i < event.target.files.length; i++) {
         this.file_name = event.target.files[i].name;
@@ -148,7 +149,7 @@ export class PostEditorComponent implements OnInit, AfterViewInit {
       }
       this.uploadFile()
     } else {
-      this.loading = false;
+      this.image_loading = false;
     }
   }
 
@@ -162,9 +163,10 @@ export class PostEditorComponent implements OnInit, AfterViewInit {
     task.percentageChanges().subscribe((percentage) => {
       this.percentage = Math.round(percentage);
       if (this.percentage == 100) {
-        this.loading = false;
         reference.getDownloadURL().subscribe((URL) => {
           this.url_public = URL;
+          this.image_loading = false;
+          this.invalid_image = false;
           this.newPost.get('image_url').setValue(URL);
         });
       }
@@ -174,15 +176,18 @@ export class PostEditorComponent implements OnInit, AfterViewInit {
   createPost() {
     this.newPost.get('long').setValue(this.map_long);
     this.newPost.get('lat').setValue(this.map_lat);
-
     if (this.newPost.valid) {
+      this.form_loading = true;
       if (this.isEdit) {
-        this._postsService.updatePost(this.newPost.value).subscribe(
+        this._postsService.updatePost(this.newPost.value, this.post_id).subscribe(
           (post: Post) => {
             this.router.navigate(['/post', post.id])
             this._snackBar.open('Post Created', 'Done', {
               duration: 3000
             });
+          },
+          (error) => {
+            this.systemError = true;
           }
         )
       } {
@@ -192,11 +197,20 @@ export class PostEditorComponent implements OnInit, AfterViewInit {
             this._snackBar.open('Post Created', 'Done', {
               duration: 3000
             });
+          },
+          (error) => {
+            this.systemError = true;
           }
         )
       }
     } {
-      // Invalid Form
+      this.form_loading = false;
+      if (!this.newPost.get('image_url').valid) {
+        this.invalid_image = true;
+      }
+      if (!this.newPost.get('lat').valid || !this.newPost.get('long').valid) {
+        this.invalid_map = true;
+      }
     }
   }
 }

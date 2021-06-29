@@ -22,7 +22,6 @@ import { environment } from 'src/environments/environment';
 
 import { ModalConfirmComponent } from './components/shared/modal-confirm/modal-confirm.component';
 import { postReducer } from './redux/reducers/post.reducer';
-import { navigationReducer } from './redux/reducers/navigation.reducer';
 
 @NgModule({
   declarations: [
@@ -46,8 +45,7 @@ import { navigationReducer } from './redux/reducers/navigation.reducer';
     AngularFireStorageModule,
     ClickOutsideModule,
     StoreModule.forRoot({
-     posts: postReducer,
-     nav: navigationReducer
+     posts: postReducer
     }),
 
     StoreDevtoolsModule.instrument({

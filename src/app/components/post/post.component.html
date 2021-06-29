@@ -1,2 +1,7 @@
 <app-search [activeList]="true"></app-search>
-<app-post-card *ngIf="post" [post]='post' [complete]="true"></app-post-card>
+<ng-container *ngIf="!loading">
+    <app-post-card *ngIf="post" [post]='post' [complete]="true"></app-post-card>
+</ng-container>
+<div *ngIf="loading" class='loading-container'>
+    <mat-spinner [diameter]="60"></mat-spinner>
+</div>

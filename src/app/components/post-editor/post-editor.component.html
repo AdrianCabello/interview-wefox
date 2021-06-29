@@ -3,11 +3,11 @@
     <h1>{{isEdit? 'Edit Post' : 'New post'}}</h1>
     <div class='editor-sub-container'>
         <div class="upload-container">
-            <form [formGroup]="form_file">
-                <div *ngIf="!url_public" class="loading-container">
+            <form [formGroup]="form_file" >
+                <div *ngIf="!url_public" class="loading-image-container">
                     <img class="upload" src="./assets/images/upload.svg" alt="upload">
-                    <span *ngIf="loading" class="percentage"> {{percentage}}%</span>
-                    <mat-progress-bar mode="determinate" [value]="percentage" max="100" *ngIf="loading">
+                    <span *ngIf="image_loading" class="percentage"> {{percentage}}%</span>
+                    <mat-progress-bar mode="determinate" [value]="percentage" max="100" *ngIf="image_loading">
                     </mat-progress-bar>
                 </div>
                 <img *ngIf="url_public" class="upload-image" [src]="url_public" alt="">
@@ -15,12 +15,15 @@
                     <input type="file" formControlName="newFile" (change)="changeFile($event)">
                 </div>
             </form>
+            <div class="systemError" *ngIf="invalid_image">
+                <span>Image is required</span>
+            </div>
         </div>
 
         <form class="post-form" [formGroup]="newPost" (submit)="createPost()">
             <mat-form-field appearance="fill">
                 <mat-label>Title</mat-label>
-                <input matInput placeholder="Buenos Aires" formControlName="title">
+                <input matInput placeholder="Buenos Aires" formControlName="title" required autocomplete="off">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -28,10 +31,25 @@
 
                 <textarea matInput
                     placeholder="Almeria is a Spanish city and municipality, capital of the province of the same name, in the autonomous community of Andalusia."
-                    formControlName="content"></textarea>
+                    formControlName="content" required></textarea>
             </mat-form-field>
-            <div #map class="map"></div>
-            <button mat-raised-button color="primary" type="submit">{{isEdit? 'Update' : 'Create'}}</button>
+            <div>
+                <div #map class="map"></div>
+                <div class="systemError" *ngIf="invalid_map">
+                    <span>Search for a location</span>
+                </div>
+            </div>
+            <button *ngIf='!form_loading' mat-raised-button color="primary" type="submit">{{isEdit? 'Update' :
+                'Create'}}</button>
+
+
+            <div class="systemError" *ngIf="systemError">
+                <span>There may be a problem with the server. Please try again later</span>
+            </div>
+
+            <div *ngIf='form_loading' class='loading-form-container'>
+                <mat-spinner [diameter]="20"></mat-spinner>
+            </div>
         </form>
     </div>
 </mat-card>

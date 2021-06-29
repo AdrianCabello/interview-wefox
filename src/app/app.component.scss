@@ -1,14 +1,12 @@
 .general-container {
-    width: 100%;
+    width: calc(100% - 20px);
     display:flex;
     align-items: center;
     flex-direction: column;
+    padding: 0 10px;
     .container{
         width: 100%;
         max-width: 1200px;
-        padding: 10px 10px;
         text-align: center;
-    }
-  
-    
+    }    
 }

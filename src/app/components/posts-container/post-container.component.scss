@@ -2,3 +2,21 @@
     width: 100%;
     display: flex;
 }
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+
+    .mat-spinner {
+        margin-top: 50px;
+    }
+}
+
+.systemError {
+    background: #f25a5a;
+    color: #fff;
+    padding: 30px;
+    margin-top: 5px;
+    text-align: center;
+    border-radius: 5px;
+}

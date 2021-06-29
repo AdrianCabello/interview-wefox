@@ -10,9 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatDialogModule} from '@angular/material/dialog';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
     imports: [
@@ -28,7 +28,8 @@ import {MatDialogModule} from '@angular/material/dialog';
         MatProgressBarModule,
         MatSnackBarModule,
         MatTooltipModule,
-        MatDialogModule
+        MatDialogModule,
+        MatProgressSpinnerModule
     ],
     exports: [
         MatButtonModule,
@@ -40,10 +41,11 @@ import {MatDialogModule} from '@angular/material/dialog';
         MatProgressBarModule,
         MatSnackBarModule,
         MatTooltipModule,
-        MatDialogModule
+        MatDialogModule,
+        MatProgressSpinnerModule
     ],
     providers: [
     ],
-    
+
 })
 export class MaterialModule { }

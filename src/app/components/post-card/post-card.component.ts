@@ -23,7 +23,6 @@ export class PostCardComponent implements OnInit, AfterViewInit {
   map!: mapboxgl.Map;
   zoomLevel = 14;
 
-
   @Input() post: Post
   @Input() complete: Boolean
 
@@ -36,7 +35,6 @@ export class PostCardComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-
   }
 
   ngAfterViewInit() {
@@ -45,7 +43,6 @@ export class PostCardComponent implements OnInit, AfterViewInit {
 
   loadMap() {
     if (this.complete) {
-
       this.map = new mapboxgl.Map({
         container: this.divMap.nativeElement,
         style: 'mapbox://styles/mapbox/streets-v11',

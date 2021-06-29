@@ -5,7 +5,6 @@ import { PostsService } from 'src/app/services/posts.service';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducers';
 import { LoadPosts } from 'src/app/redux/actions/post.actions';
-import { SetActive } from 'src/app/redux/actions/navigation.actions';
 
 @Component({
   selector: 'app-post-container',

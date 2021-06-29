@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --output-path angularappp --aot --prod"
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +26,8 @@
     "@mapbox/mapbox-gl-geocoder": "^4.7.1",
     "@ngrx/store": "^11.1.1",
     "@ngrx/store-devtools": "^12.1.0",
+    "@angular/cli": "~11.0.5",
+    "@angular/compiler-cli": "~11.0.5",
     "express": "^4.17.1",
     "firebase": "^8.6.8",
     "mapbox-gl": "^2.3.1",

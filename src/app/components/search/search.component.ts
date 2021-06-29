@@ -1,10 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Navigation, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AppState } from 'src/app/app.reducers';
-import { INavigation } from 'src/app/models/navigation';
 import { Post } from 'src/app/models/post';
 import { FilterPost, LoadPosts } from 'src/app/redux/actions/post.actions';
 import { PostsService } from 'src/app/services/posts.service';
@@ -21,7 +20,6 @@ export class SearchComponent implements OnInit, OnDestroy {
   searchControl: FormControl;
 
   posts: Array<Post>
-  navigation: INavigation;
 
   subNavigation: Subscription;
   subPost: Subscription;
